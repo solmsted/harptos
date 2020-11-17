@@ -1,0 +1,147 @@
+{
+    "author": "Steven Olmsted <steven.olm@gmail.com>",
+    "babel": {
+        "env": {
+            "build": {
+                "presets": [
+                    [
+                        "babel-preset-minify",
+                        {
+                            "builtIns": false
+                        }
+                    ]
+                ]
+            },
+            "test": {
+                "plugins": [
+                    "babel-plugin-istanbul"
+                ]
+            }
+        },
+        "plugins": [
+            "babel-plugin-transform-line"
+        ],
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "targets": {
+                        "node": "current"
+                    }
+                }
+            ]
+        ],
+        "sourceMaps": "inline"
+    },
+    "bugs": "https://github.com/solmsted/harptos/issues",
+    "dependencies": {
+        "isotropic-error": "~0.11.0",
+        "isotropic-make": "~0.11.0",
+        "isotropic-property-chainer": "~0.11.0",
+        "roll-of-years": "~0.0.1"
+    },
+    "description": "Class for representing a date in the Calendar of Harptos",
+    "devDependencies": {
+        "@babel/cli": "~7.11.6",
+        "@babel/core": "~7.11.6",
+        "babel-plugin-istanbul": "~6.0.0",
+        "babel-plugin-transform-line": "~0.9.0",
+        "@babel/preset-env": "~7.11.5",
+        "babel-preset-minify": "~0.5.1",
+        "@babel/register": "~7.11.5",
+        "chai": "~4.2.0",
+        "cross-env": "~7.0.2",
+        "eslint": "~7.5.0",
+        "eslint-plugin-isotropic": "~0.6.0",
+        "mocha": "~8.1.3",
+        "nyc": "~15.1.0"
+    },
+    "engines": {
+        "node": "^12.19.0",
+        "npm": "^6.14.8"
+    },
+    "eslintConfig": {
+        "env": {
+            "es6": true,
+            "node": true
+        },
+        "extends": "plugin:isotropic/isotropic",
+        "parserOptions": {
+            "ecmaFeatures": {
+                "globalReturn": false,
+                "impliedStrict": true,
+                "jsx": false
+            },
+            "ecmaVersion": 2020,
+            "sourceType": "module"
+        },
+        "plugins": [
+            "isotropic"
+        ],
+        "root": true
+    },
+    "files": [
+        "lib"
+    ],
+    "homepage": "https://github.com/solmsted/harptos",
+    "keywords": [
+        "calendar",
+        "calendar of harptos",
+        "d&d",
+        "dalereckoning",
+        "day",
+        "days",
+        "date",
+        "dnd",
+        "dr",
+        "dragon",
+        "dragons",
+        "dungeon",
+        "dungeons",
+        "dungeons & dragons",
+        "dungeons and dragons",
+        "faerun",
+        "faerûn",
+        "forgotten realms",
+        "harptos",
+        "month",
+        "months",
+        "moon",
+        "selune",
+        "selûne",
+        "tenday",
+        "year",
+        "years"
+    ],
+    "license": "CC-BY-SA-3.0",
+    "main": "lib/harptos.js",
+    "name": "harptos",
+    "nyc": {
+        "branches": 100,
+        "check-coverage": false,
+        "functions": 100,
+        "instrument": false,
+        "lines": 100,
+        "per-file": false,
+        "reporter": [
+            "lcov",
+            "text-summary"
+        ],
+        "require": [
+            "@babel/register"
+        ],
+        "sourceMap": false,
+        "statements": 100
+    },
+    "repository": "solmsted/harptos",
+    "scripts": {
+        "build": "cross-env BABEL_ENV=build babel js -d lib",
+        "lint": "eslint js test",
+        "posttest": "[ -z \"$npm_config_coverage\" ] || nyc check-coverage",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm test --coverage",
+        "pretest": "npm run lint",
+        "test": "cross-env BABEL_ENV=test nyc mocha"
+    },
+    "version": "0.0.1"
+}
